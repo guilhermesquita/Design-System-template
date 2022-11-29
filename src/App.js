@@ -1,5 +1,7 @@
 import axios from "axios";
+import { ChakraProvider } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
+import Card from "./Components/Card";
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -22,9 +24,10 @@ export default function App() {
   };
 
   return (
-    <>
-      <h1>Me apague quando for iniciar!</h1>
-      <p>Chame o Card aqui!</p>
-    </>
+    <ChakraProvider>
+      {users.map((user, index) => {
+        return <Card key={index} user={user}/>
+      })}
+    </ChakraProvider>
   );
 }
